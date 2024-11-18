@@ -1,0 +1,30 @@
+services:
+  ticket-hub-admin:
+    container_name: TicketHub.Admin
+    build:
+      context: ./admin-ticket-hub/
+      dockerfile: Dockerfile
+    environment:
+      - NODE_ENV=production
+    ports:
+      - "7150:7150"
+
+  ticket-hub-merchant:
+    container_name: TicketHub.Merchant
+    build:
+      context: ./merchant-ticket-hub/
+      dockerfile: Dockerfile
+    environment:
+      - NODE_ENV=production
+    ports:
+      - "8150:8150"
+
+  ticket-hub-client:
+    container_name: TicketHub.Client
+    build:
+      context: ./ticket-hub/
+      dockerfile: Dockerfile
+    environment:
+      - NODE_ENV=production
+    ports:
+      - "9150:9150"
